@@ -1,3 +1,3 @@
-# 1121_python
+# 1121_python_tutorial
 
-## 電子實驗
+
