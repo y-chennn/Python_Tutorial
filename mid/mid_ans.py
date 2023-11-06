@@ -97,8 +97,11 @@ def adventure(role, times):
             else:
                 step += 1
                 streak += 1
-    if streak >= 3:
-        print("YOU WIN")
+
+            if streak == 2:
+                print("YOU WIN")
+
+                break
 
 
 if __name__ == "__main__":
