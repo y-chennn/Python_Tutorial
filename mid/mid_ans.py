@@ -54,9 +54,12 @@ def role_roll_dice(role: dict):
     probability = [0.167, 0.167, 0.167, 0.167, 0.167, 0.167]
     STR = role["ability"]["STR"]
     DEX = role["ability"]["DEX"]
-    if STR > 0:
+    if STR > 50:
         probability[4] += probability[4] + (STR - 50) // 10 * 0.02
         probability[5] += probability[5] + (STR - 50) // 10 * 0.02
+    elif STR < 50:
+        probability[0] += probability[0] - (STR - 50) // 10 * 0.02
+        probability[1] += probability[1] - (STR - 50) // 10 * 0.02
 
     if DEX > 50:
         probability[5] += probability[5] + (DEX - 50) // 10 * 0.02
