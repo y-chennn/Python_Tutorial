@@ -72,11 +72,11 @@ class character:
 
 
 if __name__ == "__main__":
-    role = character("123", "人類", "戰士")
+    role = character("123", "矮人", "戰士")
     print(role.get_name())
     print(role.get_race())
     print(role.get_char_class())
     print(role.get_ability())
-    role.change_class("法師")
-    print(role.get_char_class())
-    print(role.get_ability())
+    # role.change_class("法師")
+    # print(role.get_char_class())
+    # print(role.get_ability())
