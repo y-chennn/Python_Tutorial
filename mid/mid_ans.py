@@ -45,11 +45,11 @@ def create_career(ability, career) -> list:
     return ability
 
 
-def roll_dice():
-    return random.randint(1, 6)
+# def roll_dice():
+#     return random.randint(1, 6)
 
 
-def role_roll_dice(role: dict):
+def roll_dice(role: dict):
     # [1, 2, 3, 4, 5, 6]
     probability = [0.167, 0.167, 0.167, 0.167, 0.167, 0.167]
     STR = role["ability"]["STR"]
@@ -80,8 +80,8 @@ def generate_field():
 
 def battle(role, num):
     def _battle():
-        role_num = role_roll_dice(role)
-        mon_num = role_roll_dice(role)
+        role_num = roll_dice(role)
+        mon_num = roll_dice(role)
 
         print(f"    In battle, You roll {role_num}, the monster roll {mon_num}. ")
 
