@@ -17,7 +17,30 @@ class character:
 
         self.__ability = self._assign_ability(self.__BASIC_ABILITY)
 
-    def _assign_ability(self, ability: dict):
+    def rename(self, name):
+        self.__name = name
+
+    def change_class(self, char_class):
+        self.__char_class = char_class
+        self.__ability = self._assign_ability(self.__BASIC_ABILITY)
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def race(self):
+        return self.__race
+
+    @property
+    def char_class(self):
+        return self.__char_class
+
+    @property
+    def ability(self):
+        return self.__ability
+
+    def _assign_ability(self, ability: dict) -> dict:
         ability = self._cal_race_bonus(list(ability.values()), self.__race)
         ability = self._cal_class_bonus(ability, self.__char_class)
         ability_dict = dict(
@@ -51,32 +74,13 @@ class character:
 
         return ability
 
-    def rename(self, name):
-        self.__name = name
-
-    def change_class(self, char_class):
-        self.__char_class = char_class
-        self.__ability = self._assign_ability(self.__BASIC_ABILITY)
-
-    def get_name(self):
-        return self.__name
-
-    def get_race(self):
-        return self.__race
-
-    def get_char_class(self):
-        return self.__char_class
-
-    def get_ability(self):
-        return self.__ability
-
 
 if __name__ == "__main__":
     role = character("123", "矮人", "戰士")
-    print(role.get_name())
-    print(role.get_race())
-    print(role.get_char_class())
-    print(role.get_ability())
-    # role.change_class("法師")
-    # print(role.get_char_class())
-    # print(role.get_ability())
+    # print(role.name)
+    # print(role.race)
+    # print(role.char_class)
+    # print(role.ability)
+    role.change_class("法師")
+    print(role.char_class)
+    print(role.ability)
