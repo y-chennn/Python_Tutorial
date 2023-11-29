@@ -4,6 +4,10 @@ class Book:
         self._author = author
         self._call_num = call_num
 
+    @property
+    def num(self):
+        return self._call_num
+
     def __str__(self):
         return f"Book: {self._title} by {self._author} (call number: {self._call_num})"
 
@@ -17,7 +21,7 @@ class Library:
 
     def find_book_by_call_num(self, call_num):
         for book in self.books:
-            if book.call_num == call_num:
+            if book.num == call_num:
                 return book
         return None
 
