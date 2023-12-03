@@ -20,7 +20,7 @@ class PokerDeck:
 
     def init_deck(self):
         # suits = ["Heart", "Diamond", "Club", "Spade"]
-        ranks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
         return ranks
 
     def shuffle_deck(self):
@@ -51,39 +51,47 @@ class BlackjackDealer(DealerBase):
     def __init__(self, deck, game_name) -> None:
         super().__init__(deck, game_name)
         self.__game_name = game_name
-        self.__banker = []
-        self.__gamer = []
+        self.__d_deck = []
+        self.__g_deck = []
 
     def poker_game(self):
-        self.__banker.append(self.deal_card())
-        self.__gamer.append(self.deal_card())
-        self.__gamer.append(self.deal_card())
-        print(f"banker's card: [{self.__banker[0]}, X]")
+        self.__d_deck.append(self.deal_card())
+        self.__d_deck.append(self.deal_card())
+        self.__g_deck.append(self.deal_card())
+        self.__g_deck.append(self.deal_card())
+        print(f"banker's card: [{self.__d_deck[0]}, X]")
         print(
-            f"Your card: {self.__gamer}, Total points: {self.__calculate(self.__gamer)}"
+            f"Your card: {self.__g_deck}, Total points: {self.__calculate(self.__g_deck)}"
         )
         while True:
+            if self.__is_blackjact(self.__g_deck):
+                print("Blackjack, you win.")
+            elif self.__is_blackjact(self.__d_deck):
+                print("Dealer blackjack, you win.")
+
             i = input("Do you want to hit (Y/n): ").lower()
             if i == "y":
                 print("hit!")
-                self.__hit(self.__gamer)
+                self.__hit(self.__g_deck)
                 print(
-                    f"Your card: {self.__gamer}, Total points: {self.__calculate(self.__gamer)}"
+                    f"Your card: {self.__g_deck}, Total points: {self.__calculate(self.__g_deck)}"
                 )
-                if self.__bust(self.__gamer) == True:
+                if self.__bust(self.__g_deck) == True:
                     print("Bust!")
                     break
             if i == "n":
                 print("stand")
                 self.__dealer_round()
-                if self.__bust(self.__banker) == True:
+                gamer_p = self.__calculate(self.__g_deck)
+                dealer_p = self.__calculate(self.__d_deck)
+                if self.__bust(self.__d_deck) == True:
                     print("Bust!")
                     print("You win!")
                     break
                 else:
-                    if sum(self.__gamer) > sum(self.__banker):
+                    if gamer_p > dealer_p:
                         print("You win!")
-                    elif sum(self.__gamer) < sum(self.__banker):
+                    elif gamer_p < dealer_p:
                         print("You lose!")
                     else:
                         print("Draw")
@@ -96,8 +104,20 @@ class BlackjackDealer(DealerBase):
         self.__bust(deck)
 
     def __calculate(self, deck: list):
-        m_deck = [10 if v in [11, 12, 13] else v for v in deck]
-        return sum(m_deck)
+        s = ["A", "J", "Q", "K"]
+        m_deck = [int(v) for v in deck if v not in s]
+        total = sum(m_deck)
+        ace_num = deck.count("A")
+        for v in deck:
+            if v in ["J", "Q", "K"]:
+                total += 10
+            elif v == "A":
+                total += 11
+
+            while ace_num > 0 and total > 21:
+                total -= 10
+                ace_num -= 1
+        return total
 
     def __bust(self, deck: list):
         sum = self.__calculate(deck)
@@ -105,22 +125,31 @@ class BlackjackDealer(DealerBase):
             return True
 
     def __dealer_round(self):
-        sum = self.__calculate(self.__banker)
-        while sum < 17:
-            self.__hit(self.__banker)
-            print(f"banker's card: {self.__banker}")
-            sum = self.__calculate(self.__banker)
+        print(
+            f"Dealer's card: {self.__d_deck}, Total points: {self.__calculate(self.__d_deck)}"
+        )
+        while self.__calculate(self.__d_deck) < 17:
+            self.__hit(self.__d_deck)
+            print(
+                f"Dealer's card: {self.__d_deck}, Total points: {self.__calculate(self.__d_deck)}"
+            )
+            sum = self.__calculate(self.__d_deck)
+
+    def __is_blackjact(self, deck):
+        has_a = any(v == "A" for v in deck)
+        has_ten = any(v in ["10", "J", "Q", "K"] for v in deck)
+        return has_a and has_ten
 
 
 class Poker:
     @staticmethod
     def start_game(game_name):
         if game_name.upper() in [game.name for game in Poker_game]:
-            print(f"Welcome! Let's play {game_name}!")
+            print(f"Welcome! Let's play {game_name}! \n")
             deck = PokerDeck(2)
             return BlackjackDealer(deck, game_name)
         else:
-            print("please enter correct game name.")
+            print("please enter correct game name. \n")
 
 
 if __name__ == "__main__":
