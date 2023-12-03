@@ -133,7 +133,6 @@ class BlackjackDealer(DealerBase):
             print(
                 f"Dealer's card: {self.__d_deck}, Total points: {self.__calculate(self.__d_deck)}"
             )
-            sum = self.__calculate(self.__d_deck)
 
     def __is_blackjact(self, deck):
         has_a = any(v == "A" for v in deck)
