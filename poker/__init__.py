@@ -1,1 +1,1 @@
-from .poker import Poker
+from .poker_game import Poker

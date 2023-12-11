@@ -1,5 +1,6 @@
 from .base import PokerDeck
 from .dealer import BlackjackDealer
+from .account import Account
 
 from enum import Enum
 
@@ -18,3 +19,7 @@ class Poker:
                 print(f"Welcome! Let's play {game_name}! \n")
                 deck = PokerDeck(2)
                 return BlackjackDealer(deck, game_name)
+
+    @staticmethod
+    def create_player(name: str):
+        return Account(name)

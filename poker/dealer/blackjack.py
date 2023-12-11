@@ -1,4 +1,5 @@
 from ..base import DealerBase
+from ..account import Account
 
 
 class BlackjackDealer(DealerBase):
@@ -20,6 +21,7 @@ class BlackjackDealer(DealerBase):
         print(
             f"Your card: {self.__deck['gamer']}, Total points: {self.__calculate(self.__deck['gamer'])}"
         )
+
         while True:
             if self.__is_blackjack(self.__deck["gamer"]):
                 print("Blackjack!")
@@ -82,3 +84,17 @@ class BlackjackDealer(DealerBase):
             has_a = any(v == "A" for v in deck)
             has_ten = any(v in ["10", "J", "Q", "K"] for v in deck)
             return has_a and has_ten
+
+    @staticmethod
+    def __bet(account: Account):
+        if account.__balance >= 0:
+            b = input("Please enter the amount you want to bet: ")
+            if b.isdigit() == True:
+                account.bet(b)
+                print(f"You bet {b}, your balance remains {account.__balance}.")
+        else:
+            print("Insufficient balance")
+
+    @staticmethod
+    def __refund(account: Account, amount: int, ratio: int = 2):
+        Account.deposit(amount * ratio)
