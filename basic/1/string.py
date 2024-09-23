@@ -1,10 +1,15 @@
-s1 = "hello world"
-s2 = "hello world!   "
+disease = "pneumonoultramicroscopicsilicovolcanoconiosis"
+# print(len(disease))
+# print(disease.capitalize())
+# print(disease.upper())
+# print(disease.isalpha())
+# print(disease[0])
+# print(disease[:])
+# print(disease[:9])
+# print(disease[8:])
 
-print(s1, s2.strip())
-print(len(s1), len(s2))
-
-s3 = "hello, world"
-print(s3, s3.replace(",", " "))
-
-print(s3.upper(), s3.lower())
+disease = "black lung"
+# print(disease)
+# print(len(disease))
+s1, s2 = disease.split(" ")
+print(s1, s2)
