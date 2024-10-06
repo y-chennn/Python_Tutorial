@@ -1,15 +1,11 @@
 disease = "pneumonoultramicroscopicsilicovolcanoconiosis"
-# print(len(disease))
-# print(disease.capitalize())
-# print(disease.upper())
-# print(disease.isalpha())
-# print(disease[0])
-# print(disease[:])
-# print(disease[:9])
-# print(disease[8:])
-
-disease = "black lung"
-# print(disease)
-# print(len(disease))
-s1, s2 = disease.split(" ")
-print(s1, s2)
+# If you have a long string and you want to know how long it is, you can use `len` function
+print(len(disease))
+# Strings also have many useful functions
+print(disease.capitalize())
+print(disease.upper())
+print(disease.isalpha())
+# If you want to get a certain letter in the string, use []
+print(disease[0])
+# [:] means all
+print(disease[:])
