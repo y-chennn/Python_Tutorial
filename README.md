@@ -1,4 +1,4 @@
-# 課程名稱: 電腦視覺設計實物
+# 課程名稱: 電腦視覺設計實務
 這堂課主要是教基本的Python使用, 上課點名一個月一次, 記得要交作業和期中期末
 可以用teams聯絡我
 
@@ -7,7 +7,7 @@
 -  學號: 611460162
 
 ## Score rule
-- Approve: 30%
+- Approve + Homework: 30%
 - Mid exam: 30%
 - Final exam: 40%
 
