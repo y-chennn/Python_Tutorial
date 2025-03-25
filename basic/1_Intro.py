@@ -1,3 +1,0 @@
-"""Introduction"""
-
-print("Hello World")
