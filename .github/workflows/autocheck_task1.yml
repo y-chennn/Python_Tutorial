@@ -2,13 +2,11 @@ name: Check Task 1
 
 on:
   pull_request:
-    branches:
-      - main
-
+    types: [opened, reopened]
   workflow_dispatch:
 
 permissions:
-  pull-requests: write
+  pull_requests: write
   issues: write
 
 jobs:
