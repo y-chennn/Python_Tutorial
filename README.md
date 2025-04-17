@@ -1,6 +1,7 @@
 # 課程名稱: 電腦視覺設計實務
-這堂課主要是教基本的Python使用, 上課不定期免名 記得要交作業和期中期末
-可以用teams聯絡我
+這堂課主要是教基本的Python使用, 上課不定期點名
+
+可以用teams聯絡我, 或是直接提出pull request, 我會在上面回覆
 
 ## About me
 -  姓名: 陳冠宇
@@ -18,7 +19,7 @@
 #### Editor
 - [VS code](https://code.visualstudio.com/)
 - [PyCharm Community Edition](https://www.jetbrains.com/pycharm/download/)
-- [Google Colab]()
+- Google Colab
 
 #### Git GUI
 - [Sourcetree](https://www.sourcetreeapp.com/)
@@ -26,8 +27,8 @@
 - [Fork](https://git-fork.com/)
 
 #### Resource
-- [iclass]()
+- iclass
 
 ## Homework
-- Task 1: 新增自己的基本資料的到Class member資料夾
-- Task 2: 根據題目要求, 新增Shape和ShapeFactory物件
+- Task 1: 新增自己的基本資料的到Class member資料夾 [detail](/task/task%201)
+- Task 2: 根據題目要求, 新增Shape和ShapeFactory物件 [detail](/task/task%202)
